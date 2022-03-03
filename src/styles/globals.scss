@@ -46,6 +46,11 @@ button {
     position: fixed;
     bottom: 68px;
   }
+
+  &.disabled {
+    background: main.$text-accent;
+    color: main.$text-secondary;
+  }
 }
 
 input {

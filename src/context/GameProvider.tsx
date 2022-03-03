@@ -18,6 +18,7 @@ const DEFAULT_GAME_STATE: GameState = {
 export const GameContext = React.createContext<GameContextInterface>({
   gameState: DEFAULT_GAME_STATE,
   startGame: null,
+  setStep: null,
   resetGame: null,
   selectCategory: null,
   onSpinStart: null,
@@ -29,6 +30,8 @@ interface GameProviderProps {
 }
 
 const GameProvider = ({ children }: GameProviderProps) => {
+  console.log("GAME PROVIDER RENDERING");
+
   const [gameState, setGameState] = useState<GameState>(DEFAULT_GAME_STATE);
   const wheelPartitions = Object.keys(WHEEL_VALUES).length;
   const wheelZoneSize = 360 / wheelPartitions;
@@ -37,8 +40,8 @@ const GameProvider = ({ children }: GameProviderProps) => {
     setGameState((prev) => ({
       ...prev,
       playerName,
-      step: 1,
     }));
+    setStep(1);
   };
 
   const resetGame = () => setGameState(DEFAULT_GAME_STATE);
@@ -47,8 +50,8 @@ const GameProvider = ({ children }: GameProviderProps) => {
     setGameState((prev) => ({
       ...prev,
       category,
-      step: 2,
     }));
+    setStep(2);
   };
 
   const onSpinStart = (absoluteDegree: number) => {
@@ -79,6 +82,13 @@ const GameProvider = ({ children }: GameProviderProps) => {
     }));
   };
 
+  const setStep = (step: number) => {
+    setGameState((prev) => ({
+      ...prev,
+      step,
+    }));
+  };
+
   const value: GameContextInterface = {
     gameState,
     startGame,
@@ -86,6 +96,7 @@ const GameProvider = ({ children }: GameProviderProps) => {
     selectCategory,
     onSpinStart,
     onSpinComplete,
+    setStep,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

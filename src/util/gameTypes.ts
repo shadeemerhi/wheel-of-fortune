@@ -20,6 +20,7 @@ export type Category = {
 export interface GameContextInterface {
   gameState: GameState;
   startGame: any;
+  setStep: any;
   resetGame: any;
   selectCategory: any;
   onSpinStart: any;

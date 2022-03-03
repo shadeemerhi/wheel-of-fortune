@@ -16,7 +16,8 @@ type WheelSpinProps = {};
 const WheelSpin: React.FC<WheelSpinProps> = () => {
   console.log("COMPONENT RENDERING");
 
-  const { gameState, onSpinStart, onSpinComplete } = useContext(GameContext);
+  const { gameState, onSpinStart, onSpinComplete, setStep } =
+    useContext(GameContext);
 
   const wheelRef = useRef<any>(null);
 
@@ -50,24 +51,27 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
         <span className="secondary_text">
           Category: {gameState.category.displayText}
         </span>
-        <span className="accent_text pointer">Back</span>
+        <span className="accent_text pointer" onClick={() => setStep(1)}>
+          Back
+        </span>
         <div className={styles.wheel_container}>
           <img src="/pointer.svg" className={styles.wheel_pointer} />
           <img src="/wheel.svg" ref={wheelRef} className={styles.wheel_body} />
         </div>
         <button
-          className="btn_primary"
+          className={classNames({
+            btn_primary: true,
+            disabled: gameState.wheelState.isSpinning,
+          })}
           onClick={handleSpin}
           disabled={gameState?.wheelState?.isSpinning}
         >
-          Spin!
+          {gameState.wheelState.isSpinning ? "Spinning!" : "Spin"}
         </button>
         {!!gameState.spinAmount && (
           <div className={styles.amount_container}>
-            <span className="lg_text">Potential Winnings:</span>
-            <span className="lg_text success_text">
-              ${gameState.spinAmount}
-            </span>
+            <span className="lg_text">🤑 Potential Winnings 🤑</span>
+            <span className={styles.amount_text}>${gameState.spinAmount}</span>
           </div>
         )}
       </div>
