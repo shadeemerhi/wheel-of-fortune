@@ -10,6 +10,7 @@ import { GameContext } from "../../context/GameProvider";
 
 import styles from "./WheelSpin.module.scss";
 import classNames from "classnames";
+import Amount from "./Amount";
 
 type WheelSpinProps = {};
 
@@ -48,7 +49,7 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
     <div className="component_wrapper">
       <div className={styles.root}>
         <span className="primary_text xl_text">Spin the Wheel!</span>
-        <span className="secondary_text">
+        <span className="secondary_text lg_text">
           Category: {gameState.category.displayText}
         </span>
         <span className="accent_text pointer" onClick={() => setStep(1)}>
@@ -75,10 +76,7 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
           </button>
         )}
         {!!gameState.spinAmount && !gameState.wheelState.isSpinning && (
-          <div className={styles.amount_container}>
-            <span className="lg_text">🤑 Potential Winnings 🤑</span>
-            <span className={styles.amount_text}>${gameState.spinAmount}</span>
-          </div>
+          <Amount spinAmount={gameState.spinAmount} textSpin />
         )}
       </div>
     </div>
