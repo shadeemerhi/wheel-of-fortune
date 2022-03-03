@@ -7,8 +7,6 @@ type Data = {
 };
 
 export function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  console.log("here is method", req.method);
-  // throw new Error("hello there is error");
   res.status(200).json({ name: "John Doe" });
 }
 
