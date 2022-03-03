@@ -68,7 +68,7 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
         >
           {gameState.wheelState.isSpinning ? "Spinning!" : "Spin"}
         </button>
-        {!!gameState.spinAmount && (
+        {!!gameState.spinAmount && !gameState.wheelState.isSpinning && (
           <div className={styles.amount_container}>
             <span className="lg_text">🤑 Potential Winnings 🤑</span>
             <span className={styles.amount_text}>${gameState.spinAmount}</span>
