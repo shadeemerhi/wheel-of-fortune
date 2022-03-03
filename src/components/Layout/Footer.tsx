@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
     <div className={styles.footer}>
       {gameState.step !== 0 && (
         <span
-          className={`${styles.reset_text} secondary_text`}
+          className={`${styles.reset_text} secondary_text pointer`}
           onClick={resetGame}
         >
           Reset Game

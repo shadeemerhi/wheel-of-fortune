@@ -1,0 +1,29 @@
+@use "../../styles/main.scss";
+
+.categories_container {
+  width: 100%;
+  padding: 10px;
+
+  .item {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding: 10px;
+    width: 100%;
+    margin: 24px 0px;
+    border-radius: main.$border-radius;
+    box-shadow: main.$box-shadow;
+    font-size: main.$lg-text;
+    font-weight: main.$light-weight;
+    cursor: pointer;
+
+    .emoji {
+      margin-right: 12px;
+    }
+
+    &._selected {
+      color: white;
+      background: main.$main;
+    }
+  }
+}

@@ -1,27 +1,10 @@
-$xs-text: 8pt;
-$sm-text: 10pt;
-$md-text: 14pt;
-$mdlg-text: 18pt;
-$lg-text: 20pt;
-$xl-text: 26pt;
-
-$border-radius: 10px;
-$font-stack: montserrat, sans-serif;
-
-$text-primary: #363c49;
-$text-secondary: #707070;
-$text-accent: #c3c3c3;
-$body: #f5f5f5;
-$main: #9aa7f5;
-$error: #f74d51;
-$success: #00db5d;
-$box-shadow: 0px 0px 10px #000000;
+@use "./main.scss";
 
 body {
   padding: 0;
   margin: 0;
-  font-family: $font-stack;
-  background: $body;
+  font-family: main.$font-stack;
+  background: main.$body;
 }
 
 a {
@@ -41,15 +24,15 @@ a {
 
 button {
   height: 44px;
-  font-size: $lg-text;
-  font-family: $font-stack;
-  border-radius: $border-radius;
+  font-size: main.$lg-text;
+  font-family: main.$font-stack;
+  border-radius: main.$border-radius;
   border: none;
   margin-top: 10px;
 
   &.btn_primary {
     color: white;
-    background-color: $main;
+    background-color: main.$main;
   }
 
   &:focus {
@@ -61,18 +44,18 @@ input {
   height: 26px;
   border-radius: 4px;
   border: none;
-  font-family: $font-stack;
+  font-family: main.$font-stack;
   padding: 10px;
   height: 46px;
   margin: 16px 0px;
-  font-size: $md-text;
+  font-size: main.$md-text;
 
   &:focus {
-    outline: 2px solid $main;
+    outline: 2px solid main.$main;
   }
 
   &::placeholder {
-    color: $text-accent;
+    color: main.$text-accent;
   }
 }
 
@@ -85,15 +68,15 @@ input {
 }
 
 .primary_text {
-  color: $text-primary;
+  color: main.$text-primary;
 }
 
 .secondary_text {
-  color: $text-secondary;
+  color: main.$text-secondary;
 }
 
 .accent_text {
-  color: $text-accent;
+  color: main.$text-accent;
 }
 
 .light_text {
@@ -113,25 +96,29 @@ input {
 }
 
 .xs_text {
-  font-size: $xs-text;
+  font-size: main.$xs-text;
 }
 
 .sm_text {
-  font-size: $sm-text;
+  font-size: main.$sm-text;
 }
 
 .md_text {
-  font-size: $md-text;
+  font-size: main.$md-text;
 }
 
 .mdlg_text {
-  font-size: $mdlg-text;
+  font-size: main.$mdlg-text;
 }
 
 .lg_text {
-  font-size: $lg-text;
+  font-size: main.$lg-text;
 }
 
 .xl_text {
-  font-size: $xl-text;
+  font-size: main.$xl-text;
+}
+
+.pointer {
+  cursor: pointer;
 }

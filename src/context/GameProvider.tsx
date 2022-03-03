@@ -1,34 +1,24 @@
 import React, { ReactNode, useState } from "react";
-
-interface GameContextInterface {
-  gameState: GameState;
-  startGame: any;
-  resetGame: any;
-}
+import { Category, GameContextInterface, GameState } from "../util/gameTypes";
+import { CATEGORIES } from "../util/staticData";
 
 const DEFAULT_GAME_STATE: GameState = {
   step: 0,
   loading: false,
   playerName: "",
-  category: "Sports",
+  category: CATEGORIES[0],
 };
 
 export const GameContext = React.createContext<GameContextInterface>({
   gameState: DEFAULT_GAME_STATE,
   startGame: null,
   resetGame: null,
+  selectCategory: null,
 });
 
 interface GameProviderProps {
   children: ReactNode;
 }
-
-type GameState = {
-  step: number;
-  loading: boolean;
-  playerName: string;
-  category: string;
-};
 
 const GameProvider = ({ children }: GameProviderProps) => {
   const [gameState, setGameState] = useState<GameState>(DEFAULT_GAME_STATE);
@@ -43,10 +33,18 @@ const GameProvider = ({ children }: GameProviderProps) => {
 
   const resetGame = () => setGameState(DEFAULT_GAME_STATE);
 
+  const selectCategory = (category: Category) => {
+    setGameState((prev) => ({
+      ...prev,
+      category,
+    }));
+  };
+
   const value: GameContextInterface = {
     gameState,
     startGame,
     resetGame,
+    selectCategory,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
