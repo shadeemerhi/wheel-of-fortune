@@ -1,13 +1,15 @@
+import { useState } from "react";
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+
+import Layout from "../components/Layout";
+import Categories from "../components/Categories";
 
 const Home: NextPage = () => {
+  const [step, setStep] = useState(0);
   return (
-    <div>
-      <button className="btn_primary">Hello</button>
-    </div>
+    <Layout>
+      <Categories />
+    </Layout>
   );
 };
 

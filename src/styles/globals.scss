@@ -20,7 +20,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: montserrat, sans-serif;
-  color: $main;
+  background: $body;
 }
 
 a {
@@ -45,4 +45,9 @@ button {
   &:focus {
     outline: none;
   }
+}
+
+.component_wrapper {
+  border: 1px solid red;
+  padding: 10px;
 }
