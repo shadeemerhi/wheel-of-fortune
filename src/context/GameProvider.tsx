@@ -37,8 +37,11 @@ const GameProvider = ({ children }: GameProviderProps) => {
     setGameState((prev) => ({
       ...prev,
       category,
+      step: 2,
     }));
   };
+
+  const onSpin = () => {};
 
   const value: GameContextInterface = {
     gameState,

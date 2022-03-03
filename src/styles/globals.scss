@@ -27,12 +27,15 @@ button {
   font-size: main.$lg-text;
   font-family: main.$font-stack;
   border-radius: main.$border-radius;
+  box-shadow: main.$box-shadow;
   border: none;
   margin-top: 10px;
+  cursor: pointer;
 
   &.btn_primary {
     color: white;
     background-color: main.$main;
+    width: 220px;
   }
 
   &:focus {
@@ -41,7 +44,6 @@ button {
 
   &.submit_btn {
     position: fixed;
-    width: 60%;
     bottom: 68px;
   }
 }

@@ -6,13 +6,13 @@ import classNames from "classnames";
 
 type CategoryItemProps = {
   category: Category;
-  selectCategory: (value: Category) => void;
+  setSelectedCategory: (value: Category) => void;
   selected: boolean;
 };
 
 const CategoryItem: React.FC<CategoryItemProps> = ({
   category,
-  selectCategory,
+  setSelectedCategory,
   selected,
 }) => {
   return (
@@ -21,7 +21,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({
         [styles.item]: true,
         [styles._selected]: selected,
       })}
-      onClick={() => selectCategory(category)}
+      onClick={() => setSelectedCategory(category)}
     >
       <span className={styles.emoji}>{category.emoji}</span>
       <span>{category.displayText}</span>

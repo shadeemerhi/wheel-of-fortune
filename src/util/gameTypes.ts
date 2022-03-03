@@ -3,6 +3,11 @@ export type GameState = {
   loading: boolean;
   playerName: string;
   category: Category;
+  wheelState: {
+    isSpinning: boolean;
+    spinDegree: number;
+    trueDegree: number;
+  };
 };
 
 export type Category = {
