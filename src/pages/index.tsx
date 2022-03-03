@@ -8,14 +8,12 @@ import Categories from "../components/Categories";
 import { GameContext } from "../context/GameProvider";
 
 const Home: NextPage = () => {
-  const [step, setStep] = useState(0);
-
   const { gameState } = useContext(GameContext);
 
   return (
     <Layout>
-      {step === 0 && <GameIntro setStep={setStep} />}
-      {step === 1 && <Categories />}
+      {gameState.step === 0 && <GameIntro />}
+      {gameState.step === 1 && <Categories />}
     </Layout>
   );
 };

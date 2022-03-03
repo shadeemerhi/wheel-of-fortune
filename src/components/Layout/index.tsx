@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React from "react";
-import Navbar from "../Navbar";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 const Layout: React.FC = ({ children }) => {
   return (
@@ -17,6 +18,7 @@ const Layout: React.FC = ({ children }) => {
       <div className="app_container">
         <Navbar />
         {children}
+        <Footer />
       </div>
     </>
   );
