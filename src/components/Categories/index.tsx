@@ -23,6 +23,7 @@ const Categories: React.FC<CategoriesProps> = ({}) => {
           />
         ))}
       </div>
+      <button className="btn_primary submit_btn">Submit</button>
     </div>
   );
 };

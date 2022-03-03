@@ -38,6 +38,12 @@ button {
   &:focus {
     outline: none;
   }
+
+  &.submit_btn {
+    position: fixed;
+    width: 60%;
+    bottom: 68px;
+  }
 }
 
 input {

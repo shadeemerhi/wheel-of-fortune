@@ -31,4 +31,29 @@ export const CATEGORIES: Category[] = [
     emoji: "🏈",
     categoryId: 6,
   },
+  {
+    displayText: "Science & Nature",
+    emoji: "🔬",
+    categoryId: 7,
+  },
+  {
+    displayText: "Computers",
+    emoji: "💻",
+    categoryId: 8,
+  },
+  {
+    displayText: "Mathematics",
+    emoji: "𝑓",
+    categoryId: 9,
+  },
+  {
+    displayText: "Geography",
+    emoji: "🌎",
+    categoryId: 10,
+  },
+  {
+    displayText: "Animals",
+    emoji: "🐼",
+    categoryId: 11,
+  },
 ];
