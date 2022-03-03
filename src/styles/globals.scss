@@ -3,7 +3,7 @@ $sm-text: 10pt;
 $md-text: 12pt;
 $mdlg-text: 14pt;
 $lg-text: 16pt;
-$xl-text: 18pt;
+$xl-text: 26pt;
 
 $border-radius: 10px;
 
@@ -48,6 +48,45 @@ button {
 }
 
 .component_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid red;
   padding: 10px;
+}
+
+.primary_text {
+  color: $text-primary;
+}
+
+.light_text {
+  font-weight: 300;
+}
+
+.medium_text {
+  font-weight: 500;
+}
+
+.heavy_text {
+  font-weight: 700;
+}
+
+.italic_text {
+  font-style: italic;
+}
+
+.xs_text {
+  font-size: $xs-text;
+}
+
+.sm_text {
+  font-size: $sm-text;
+}
+
+.md_text {
+  font-size: $md-text;
+}
+
+.xl_text {
+  font-size: $xl-text;
 }
