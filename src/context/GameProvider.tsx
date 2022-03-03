@@ -7,6 +7,11 @@ const DEFAULT_GAME_STATE: GameState = {
   loading: false,
   playerName: "",
   category: CATEGORIES[0],
+  wheelState: {
+    isSpinning: false,
+    absoluteDegree: 0,
+    relativeDegree: 0,
+  },
 };
 
 export const GameContext = React.createContext<GameContextInterface>({
@@ -14,6 +19,7 @@ export const GameContext = React.createContext<GameContextInterface>({
   startGame: null,
   resetGame: null,
   selectCategory: null,
+  onSpinStart: null,
   onSpinComplete: null,
 });
 
@@ -44,6 +50,17 @@ const GameProvider = ({ children }: GameProviderProps) => {
     }));
   };
 
+  const onSpinStart = (absoluteDegree: number) => {
+    setGameState((prev) => ({
+      ...prev,
+      wheelState: {
+        ...prev.wheelState,
+        isSpinning: true,
+        absoluteDegree,
+      },
+    }));
+  };
+
   const onSpinComplete = (relativeDegree: number) => {
     const spinWheelValue = Math.ceil(relativeDegree / wheelZoneSize);
     console.log(
@@ -51,6 +68,15 @@ const GameProvider = ({ children }: GameProviderProps) => {
       spinWheelValue,
       WHEEL_VALUES[spinWheelValue as number]
     );
+
+    setGameState((prev) => ({
+      ...prev,
+      wheelState: {
+        ...prev.wheelState,
+        isSpinning: false,
+        relativeDegree,
+      },
+    }));
   };
 
   const value: GameContextInterface = {
@@ -58,6 +84,7 @@ const GameProvider = ({ children }: GameProviderProps) => {
     startGame,
     resetGame,
     selectCategory,
+    onSpinStart,
     onSpinComplete,
   };
 
