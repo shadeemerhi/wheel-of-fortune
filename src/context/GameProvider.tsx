@@ -11,10 +11,13 @@ interface GameProviderProps {
 }
 
 type GameState = {
+  loading: boolean;
+  playerName?: string;
   category: string;
 };
 
 const DEFAULT_GAME_STATE: GameState = {
+  loading: false,
   category: "Sports",
 };
 

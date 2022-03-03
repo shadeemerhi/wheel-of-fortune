@@ -1,11 +1,12 @@
 $xs-text: 8pt;
 $sm-text: 10pt;
-$md-text: 12pt;
-$mdlg-text: 14pt;
-$lg-text: 16pt;
+$md-text: 14pt;
+$mdlg-text: 18pt;
+$lg-text: 20pt;
 $xl-text: 26pt;
 
 $border-radius: 10px;
+$font-stack: montserrat, sans-serif;
 
 $text-primary: #363c49;
 $text-secondary: #707070;
@@ -19,7 +20,7 @@ $box-shadow: 0px 0px 10px #000000;
 body {
   padding: 0;
   margin: 0;
-  font-family: montserrat, sans-serif;
+  font-family: $font-stack;
   background: $body;
 }
 
@@ -32,10 +33,19 @@ a {
   box-sizing: border-box;
 }
 
+.app_container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 button {
-  height: 30px;
+  height: 44px;
+  font-size: $lg-text;
+  font-family: $font-stack;
   border-radius: $border-radius;
   border: none;
+  margin-top: 10px;
 
   &.btn_primary {
     color: white;
@@ -47,16 +57,43 @@ button {
   }
 }
 
+input {
+  height: 26px;
+  border-radius: 4px;
+  border: none;
+  font-family: $font-stack;
+  padding: 10px;
+  height: 46px;
+  margin: 16px 0px;
+  font-size: $md-text;
+
+  &:focus {
+    outline: 2px solid $main;
+  }
+
+  &::placeholder {
+    color: $text-accent;
+  }
+}
+
 .component_wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid red;
+  flex-grow: 1;
   padding: 10px;
 }
 
 .primary_text {
   color: $text-primary;
+}
+
+.secondary_text {
+  color: $text-secondary;
+}
+
+.accent_text {
+  color: $text-accent;
 }
 
 .light_text {
@@ -85,6 +122,14 @@ button {
 
 .md_text {
   font-size: $md-text;
+}
+
+.mdlg_text {
+  font-size: $mdlg-text;
+}
+
+.lg_text {
+  font-size: $lg-text;
 }
 
 .xl_text {

@@ -14,8 +14,10 @@ const Layout: React.FC = ({ children }) => {
           rel="stylesheet"
         />
       </Head>
-      {/* <Navbar /> */}
-      {children}
+      <div className="app_container">
+        <Navbar />
+        {children}
+      </div>
     </>
   );
 };
