@@ -58,16 +58,25 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
           <img src="/pointer.svg" className={styles.wheel_pointer} />
           <img src="/wheel.svg" ref={wheelRef} className={styles.wheel_body} />
         </div>
-        <button
-          className={classNames({
-            btn_primary: true,
-            disabled: gameState.wheelState.isSpinning,
-          })}
-          onClick={handleSpin}
-          disabled={gameState?.wheelState?.isSpinning}
-        >
-          {gameState.wheelState.isSpinning ? "Spinning!" : "Spin"}
-        </button>
+        {!gameState.spinAmount ? (
+          <button
+            className={classNames({
+              btn_primary: true,
+              disabled: gameState.wheelState.isSpinning,
+            })}
+            onClick={handleSpin}
+            disabled={gameState?.wheelState?.isSpinning}
+          >
+            {gameState.wheelState.isSpinning ? "Spinning!" : "Spin"}
+          </button>
+        ) : (
+          <button
+            className="btn_primary"
+            // onClick={handleSpin}
+          >
+            Go to Question
+          </button>
+        )}
         {!!gameState.spinAmount && !gameState.wheelState.isSpinning && (
           <div className={styles.amount_container}>
             <span className="lg_text">🤑 Potential Winnings 🤑</span>
