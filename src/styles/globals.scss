@@ -1,7 +1,26 @@
+$xs-text: 8pt;
+$sm-text: 10pt;
+$md-text: 12pt;
+$mdlg-text: 14pt;
+$lg-text: 16pt;
+$xl-text: 18pt;
+
+$border-radius: 10px;
+
+$text-primary: #363c49;
+$text-secondary: #707070;
+$text-accent: #c3c3c3;
+$body: #f5f5f5;
+$main: #9aa7f5;
+$error: #f74d51;
+$success: #00db5d;
+$box-shadow: 0px 0px 10px #000000;
+
 body {
   padding: 0;
   margin: 0;
   font-family: montserrat, sans-serif;
+  color: $main;
 }
 
 a {
@@ -11,4 +30,19 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+button {
+  height: 30px;
+  border-radius: $border-radius;
+  border: none;
+
+  &.btn_primary {
+    color: white;
+    background-color: $main;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }

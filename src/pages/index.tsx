@@ -4,7 +4,11 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  return <div>Hello</div>;
+  return (
+    <div>
+      <button className="btn_primary">Hello</button>
+    </div>
+  );
 };
 
 export default Home;
