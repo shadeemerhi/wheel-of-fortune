@@ -8,6 +8,7 @@ export type GameState = {
     absoluteDegree: number;
     relativeDegree: number;
   };
+  spinAmount: number;
 };
 
 export type Category = {

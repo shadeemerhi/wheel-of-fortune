@@ -12,6 +12,7 @@ const DEFAULT_GAME_STATE: GameState = {
     absoluteDegree: 0,
     relativeDegree: 0,
   },
+  spinAmount: 0,
 };
 
 export const GameContext = React.createContext<GameContextInterface>({
@@ -63,11 +64,9 @@ const GameProvider = ({ children }: GameProviderProps) => {
 
   const onSpinComplete = (relativeDegree: number) => {
     const spinWheelValue = Math.ceil(relativeDegree / wheelZoneSize);
-    console.log(
-      "HERE IS SPIN WHEEL VALUE",
-      spinWheelValue,
-      WHEEL_VALUES[spinWheelValue as number]
-    );
+    const spinAmount = WHEEL_VALUES[spinWheelValue as number];
+
+    console.log("HERE IS SPIN WHEEL VALUE", spinWheelValue, spinAmount);
 
     setGameState((prev) => ({
       ...prev,
@@ -76,6 +75,7 @@ const GameProvider = ({ children }: GameProviderProps) => {
         isSpinning: false,
         relativeDegree,
       },
+      spinAmount,
     }));
   };
 

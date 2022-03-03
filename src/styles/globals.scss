@@ -87,6 +87,14 @@ input {
   color: main.$text-accent;
 }
 
+.success_text {
+  color: main.$success;
+}
+
+.error_text {
+  color: main.$error;
+}
+
 .light_text {
   font-weight: 300;
 }

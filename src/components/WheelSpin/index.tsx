@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import { GameContext } from "../../context/GameProvider";
 
@@ -8,42 +14,31 @@ import classNames from "classnames";
 type WheelSpinProps = {};
 
 const WheelSpin: React.FC<WheelSpinProps> = () => {
-  const [wheelState, setWheelState] = useState({
-    isSpinning: false,
-    absoluteDegree: 0,
-    relativeDegree: 0,
-  });
+  console.log("COMPONENT RENDERING");
+
   const { gameState, onSpinStart, onSpinComplete } = useContext(GameContext);
 
   const wheelRef = useRef<any>(null);
 
-  const handleSpin = () => {
+  const handleSpin = useCallback(() => {
     const absoluteDegree = Math.floor(5000 + Math.random() * 5000);
-    onSpinStart(absoluteDegree);
     console.log("here is current thing", wheelRef, absoluteDegree);
 
     // Apply spin styles
     wheelRef.current.style.transition = "all 10s ease-out";
     wheelRef.current.style.transform = `rotate(${absoluteDegree}deg)`;
-    // setWheelState((prev) => ({
-    //   ...prev,
-    //   isSpinning: true,
-    //   absoluteDegree,
-    // }));
-  };
+
+    // update game state
+    onSpinStart(absoluteDegree);
+  }, [onSpinStart]);
 
   useEffect(() => {
     wheelRef.current.addEventListener("transitionend", () => {
-      console.log("here is transition end LOL");
       const relativeDegree = gameState.wheelState.absoluteDegree % 360;
       wheelRef.current.style.transition = "none";
       wheelRef.current.style.transform = `rotate(${relativeDegree}deg)`;
 
-      // setWheelState((prev) => ({
-      //   ...prev,
-      //   isSpinning: false,
-      //   relativeDegree,
-      // }));
+      // update game state
       onSpinComplete(relativeDegree);
     });
   }, [gameState.wheelState.absoluteDegree]);
@@ -67,6 +62,14 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
         >
           Spin!
         </button>
+        {!!gameState.spinAmount && (
+          <div className={styles.amount_container}>
+            <span className="lg_text">Potential Winnings:</span>
+            <span className="lg_text success_text">
+              ${gameState.spinAmount}
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
