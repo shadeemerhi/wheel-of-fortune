@@ -57,3 +57,18 @@ export const CATEGORIES: Category[] = [
     categoryId: 11,
   },
 ];
+
+export const WHEEL_VALUES = {
+  1: 100,
+  2: 10,
+  3: 40,
+  4: 200,
+  5: 110,
+  6: 75,
+  7: 60,
+  8: 120,
+  9: 50,
+  10: 80,
+  11: 140,
+  12: 20,
+};

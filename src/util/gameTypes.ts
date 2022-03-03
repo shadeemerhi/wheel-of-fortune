@@ -3,11 +3,11 @@ export type GameState = {
   loading: boolean;
   playerName: string;
   category: Category;
-  wheelState: {
-    isSpinning: boolean;
-    spinDegree: number;
-    trueDegree: number;
-  };
+  // wheelState: {
+  //   isSpinning: boolean;
+  //   spinDegree: number;
+  //   trueDegree: number;
+  // };
 };
 
 export type Category = {
@@ -21,4 +21,5 @@ export interface GameContextInterface {
   startGame: any;
   resetGame: any;
   selectCategory: any;
+  onSpinComplete: any;
 }

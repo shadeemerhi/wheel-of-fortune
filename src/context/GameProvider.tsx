@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { Category, GameContextInterface, GameState } from "../util/gameTypes";
-import { CATEGORIES } from "../util/staticData";
+import { CATEGORIES, WHEEL_VALUES } from "../util/staticData";
 
 const DEFAULT_GAME_STATE: GameState = {
   step: 0,
@@ -14,6 +14,7 @@ export const GameContext = React.createContext<GameContextInterface>({
   startGame: null,
   resetGame: null,
   selectCategory: null,
+  onSpinComplete: null,
 });
 
 interface GameProviderProps {
@@ -22,6 +23,8 @@ interface GameProviderProps {
 
 const GameProvider = ({ children }: GameProviderProps) => {
   const [gameState, setGameState] = useState<GameState>(DEFAULT_GAME_STATE);
+  const wheelPartitions = Object.keys(WHEEL_VALUES).length;
+  const wheelZoneSize = 360 / wheelPartitions;
 
   const startGame = (playerName: string) => {
     setGameState((prev) => ({
@@ -41,13 +44,21 @@ const GameProvider = ({ children }: GameProviderProps) => {
     }));
   };
 
-  const onSpin = () => {};
+  const onSpinComplete = (relativeDegree: number) => {
+    const spinWheelValue = Math.ceil(relativeDegree / wheelZoneSize);
+    console.log(
+      "HERE IS SPIN WHEEL VALUE",
+      spinWheelValue,
+      WHEEL_VALUES[spinWheelValue as number]
+    );
+  };
 
   const value: GameContextInterface = {
     gameState,
     startGame,
     resetGame,
     selectCategory,
+    onSpinComplete,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
