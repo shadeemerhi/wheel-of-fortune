@@ -70,10 +70,7 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
             {gameState.wheelState.isSpinning ? "Spinning!" : "Spin"}
           </button>
         ) : (
-          <button
-            className="btn_primary"
-            // onClick={handleSpin}
-          >
+          <button className="btn_primary" onClick={() => setStep(3)}>
             Go to Question
           </button>
         )}

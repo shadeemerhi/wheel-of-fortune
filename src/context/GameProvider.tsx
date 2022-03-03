@@ -1,10 +1,16 @@
-import React, { ReactNode, useState } from "react";
-import { Category, GameContextInterface, GameState } from "../util/gameTypes";
+import React, { ReactNode, useEffect, useState } from "react";
+import {
+  Category,
+  GameContextInterface,
+  GameState,
+  Question,
+} from "../util/gameTypes";
 import { CATEGORIES, WHEEL_VALUES } from "../util/staticData";
 
 const DEFAULT_GAME_STATE: GameState = {
   step: 0,
   loading: false,
+  error: "",
   playerName: "",
   category: CATEGORIES[0],
   wheelState: {
@@ -13,6 +19,7 @@ const DEFAULT_GAME_STATE: GameState = {
     relativeDegree: 0,
   },
   spinAmount: 0,
+  question: null,
 };
 
 export const GameContext = React.createContext<GameContextInterface>({
@@ -81,6 +88,48 @@ const GameProvider = ({ children }: GameProviderProps) => {
       spinAmount,
     }));
   };
+
+  const fetchQuestion = async () => {
+    try {
+      const response = await fetch(
+        `https://opentdb.com/api.php?amount=10&category=${gameState.category.categoryId}&difficulty=easy`
+      );
+      const data = await response.json();
+
+      const { results }: { results: Question[] } = data;
+      if (data.response_code !== 0) {
+        throw new Error("Error fetching results");
+      }
+
+      if (!results.length) {
+        throw new Error("No results");
+      }
+
+      console.log("HERE IS DATA", data);
+
+      const questions = results.filter(
+        (question) => question.type !== "boolean"
+      );
+
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      console.log("HERE ARE QUESTION OPTIONS", questions);
+      setGameState((prev) => ({
+        ...prev,
+        question: questions[randomIndex],
+      }));
+    } catch (error: any) {
+      console.log("HERE IS ERROR", error);
+      setGameState((prev) => ({
+        ...prev,
+        error: error.message,
+      }));
+    }
+  };
+
+  useEffect(() => {
+    if (!gameState.spinAmount) return;
+    fetchQuestion();
+  }, [gameState.spinAmount]);
 
   const setStep = (step: number) => {
     setGameState((prev) => ({

@@ -1,6 +1,7 @@
 export type GameState = {
   step: number;
   loading: boolean;
+  error: string;
   playerName: string;
   category: Category;
   wheelState: {
@@ -9,12 +10,22 @@ export type GameState = {
     relativeDegree: number;
   };
   spinAmount: number;
+  question: Question | null;
 };
 
 export type Category = {
   displayText: string;
   emoji: string;
   categoryId: number;
+};
+
+export type Question = {
+  category: string;
+  question: string;
+  type: "boolean" | "multiple";
+  difficulty: "easy" | "medium" | "hard";
+  correct_answer: string;
+  incorrect_answers: string[];
 };
 
 export interface GameContextInterface {

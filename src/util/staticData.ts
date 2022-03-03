@@ -1,60 +1,61 @@
 import { Category } from "./gameTypes";
 
+// Category ID's as indicated by opentdb.com
 export const CATEGORIES: Category[] = [
   {
     displayText: "General Knowledge",
     emoji: "🤔",
-    categoryId: 1,
+    categoryId: 9,
   },
   {
     displayText: "Music",
     emoji: "🎶",
-    categoryId: 2,
+    categoryId: 12,
   },
   {
     displayText: "Celebrities",
     emoji: "💃",
-    categoryId: 3,
+    categoryId: 26,
   },
   {
     displayText: "Film",
     emoji: "🎬",
-    categoryId: 4,
+    categoryId: 11,
   },
   {
     displayText: "Video Games",
     emoji: "🎮",
-    categoryId: 5,
+    categoryId: 15,
   },
   {
     displayText: "Sports",
     emoji: "🏈",
-    categoryId: 6,
+    categoryId: 21,
   },
   {
     displayText: "Science & Nature",
     emoji: "🔬",
-    categoryId: 7,
+    categoryId: 17,
   },
   {
     displayText: "Computers",
     emoji: "💻",
-    categoryId: 8,
+    categoryId: 18,
   },
   {
     displayText: "Mathematics",
     emoji: "𝑓",
-    categoryId: 9,
+    categoryId: 19,
   },
   {
     displayText: "Geography",
     emoji: "🌎",
-    categoryId: 10,
+    categoryId: 22,
   },
   {
     displayText: "Animals",
     emoji: "🐼",
-    categoryId: 11,
+    categoryId: 27,
   },
 ];
 
