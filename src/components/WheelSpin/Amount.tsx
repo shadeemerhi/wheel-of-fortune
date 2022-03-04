@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GameContext } from "../../context/GameProvider";
 
 import styles from "./WheelSpin.module.scss";
 import classNames from "classnames";
 
 type AmountProps = {
-  spinAmount: number;
   textSpin?: boolean;
 };
 
-const Amount: React.FC<AmountProps> = ({ spinAmount, textSpin }) => {
+const Amount: React.FC<AmountProps> = ({ textSpin }) => {
+  const {
+    gameState: { spinAmount },
+  } = useContext(GameContext);
   return (
     <div className={styles.amount_container}>
-      <span className="lg_text">🤑 Potential Winnings 🤑</span>
+      <span className="mdlg_text">Potential Winnings 🤑</span>
+      <br />
       <span
         className={classNames({
           [styles.amount_text]: true,

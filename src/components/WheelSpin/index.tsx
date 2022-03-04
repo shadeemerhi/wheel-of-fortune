@@ -11,10 +11,17 @@ import { GameContext } from "../../context/GameProvider";
 import styles from "./WheelSpin.module.scss";
 import classNames from "classnames";
 import Amount from "./Amount";
+import Modal from "../../components/Modal";
 
 type WheelSpinProps = {};
 
 const WheelSpin: React.FC<WheelSpinProps> = () => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => {
+    setStep(3);
+    setOpen(false);
+  };
   const { gameState, onSpinStart, onSpinComplete, setStep } =
     useContext(GameContext);
 
@@ -41,8 +48,21 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
 
       // update game state
       onSpinComplete(relativeDegree);
+      setTimeout(() => {
+        handleOpen();
+      }, 500);
     });
   }, [gameState.wheelState.absoluteDegree]);
+
+  useEffect(() => {
+    if (!gameState.wheelState.relativeDegree) return;
+    /**
+     * open modal when the relative degree state updates;
+     * this means the wheel speen is complete and the value
+     * has been determined
+     */
+    // handleOpen();
+  }, [gameState.wheelState.relativeDegree]);
 
   return (
     <div className="component_wrapper">
@@ -58,7 +78,7 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
           <img src="/pointer.svg" className={styles.wheel_pointer} />
           <img src="/wheel.svg" ref={wheelRef} className={styles.wheel_body} />
         </div>
-        {!gameState.spinAmount ? (
+        {!gameState.spinAmount && (
           <button
             className={classNames({
               btn_primary: true,
@@ -69,15 +89,9 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
           >
             {gameState.wheelState.isSpinning ? "Spinning!" : "Spin"}
           </button>
-        ) : (
-          <button className="btn_primary" onClick={() => setStep(3)}>
-            Question
-          </button>
-        )}
-        {!!gameState.spinAmount && !gameState.wheelState.isSpinning && (
-          <Amount spinAmount={gameState.spinAmount} textSpin />
         )}
       </div>
+      <Modal open={open} handleClose={handleClose} />
     </div>
   );
 };

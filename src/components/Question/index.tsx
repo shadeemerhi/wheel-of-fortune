@@ -29,9 +29,9 @@ const Question: React.FC<QuestionProps> = () => {
         <span className="secondary_text md_text">
           Category: {gameState.category.displayText}
         </span>
-        <Amount spinAmount={gameState.spinAmount} />
+        <Amount />
         <div className={styles.question_container}>
-          <span className="xl_text">{gameState.question?.question}</span>
+          <span className="lg_text">{gameState.question?.question}</span>
           {!gameState.providedAnswer && !gameState.multipleChoice && (
             <span className="secondary_text">
               If it's a number, please type as a word (e.g. 1 as 'one')
