@@ -9,7 +9,7 @@ type Data = {
 };
 
 export async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  console.log("INSIDE OF THE REQUEST");
+  console.log("INSIDE OF THE REQUEST", process.env.MONGO_URI);
   await dbConnect();
   console.log("INSIDE OF THE REQUEST");
 
