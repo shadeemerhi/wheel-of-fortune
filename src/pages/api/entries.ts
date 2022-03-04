@@ -9,11 +9,9 @@ type Data = {
 };
 
 export async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  console.log("INSIDE OF THE REQUEST", process.env.MONGO_URI);
   await dbConnect();
-  console.log("INSIDE OF THE REQUEST");
 
-  EntryModel.create(req.body);
+  await EntryModel.create(req.body);
 
   res.status(200).json({ message: "Successfully saved" });
 }

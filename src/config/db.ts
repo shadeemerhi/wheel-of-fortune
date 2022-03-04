@@ -38,6 +38,7 @@ if (!cached) {
 
 async function dbConnect() {
   if (cached.conn) {
+    console.log("USING EXISTING CONNECTION");
     return cached.conn;
   }
 
