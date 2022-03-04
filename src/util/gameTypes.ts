@@ -15,6 +15,7 @@ export type GameState = {
   unknown: boolean;
   isCorrect: boolean;
   multipleChoice?: string[];
+  successfullySaved: boolean;
 };
 
 export type Category = {
@@ -43,4 +44,12 @@ export interface GameContextInterface {
   onSpinComplete: any;
   submitAnswer: any;
   convertToMultipleChoice: any;
+}
+
+export interface Entry {
+  category: Category;
+  spinAmount: number;
+  question: Question;
+  providedAnswer: string;
+  isCorrect: boolean;
 }

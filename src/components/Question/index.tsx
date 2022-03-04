@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GameContext } from "../../context/GameProvider";
 
 import Amount from "../WheelSpin/Amount";
@@ -22,6 +22,7 @@ const Question: React.FC<QuestionProps> = () => {
     }
     submitAnswer(answer);
   };
+
   return (
     <div className="component_wrapper">
       <div className={styles.root}>
@@ -63,6 +64,12 @@ const Question: React.FC<QuestionProps> = () => {
                 <span className="lg_text pointer" onClick={playAgain}>
                   Play again
                 </span>
+                <br />
+                {gameState.successfullySaved && (
+                  <span className="accent_text sm_text">
+                    Successfully saved
+                  </span>
+                )}
               </div>
             </>
           ) : (

@@ -1,4 +1,5 @@
 import React, { ReactNode, useEffect, useState } from "react";
+import { json } from "stream/consumers";
 import {
   Category,
   GameContextInterface,
@@ -23,6 +24,7 @@ const DEFAULT_GAME_STATE: GameState = {
   providedAnswer: "",
   unknown: false,
   isCorrect: false,
+  successfullySaved: false,
 };
 
 export const GameContext = React.createContext<GameContextInterface>({
@@ -43,8 +45,6 @@ interface GameProviderProps {
 }
 
 const GameProvider = ({ children }: GameProviderProps) => {
-  console.log("GAME PROVIDER RENDERING");
-
   const [gameState, setGameState] = useState<GameState>(DEFAULT_GAME_STATE);
   const wheelPartitions = Object.keys(WHEEL_VALUES).length;
   const wheelZoneSize = 360 / wheelPartitions;
@@ -154,15 +154,43 @@ const GameProvider = ({ children }: GameProviderProps) => {
   const fixQuestionText = (questionText: string) =>
     questionText.replaceAll("&quot;", "'").replaceAll("&#039;", "'");
 
-  const submitAnswer = (providedAnswer: string) => {
+  const submitAnswer = async (providedAnswer: string) => {
     const isCorrect =
       providedAnswer === gameState.question?.correct_answer ||
       providedAnswer === gameState.question?.correct_answer.toLowerCase();
-    setGameState((prev) => ({
-      ...prev,
+
+    const updatedGameState = {
+      ...gameState,
       isCorrect,
       providedAnswer,
+    };
+    setGameState((prev) => ({
+      ...updatedGameState,
     }));
+
+    // post result to API
+    try {
+      const response = await fetch("/api/entries", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedGameState),
+      });
+
+      if (response.status !== 200) {
+        throw new Error("Error saving entry");
+      }
+      setGameState((prev) => ({
+        ...prev,
+        successfullySaved: true,
+      }));
+    } catch (error: any) {
+      setGameState((prev) => ({
+        ...prev,
+        error: error.message,
+      }));
+    }
   };
 
   const convertToMultipleChoice = () => {
