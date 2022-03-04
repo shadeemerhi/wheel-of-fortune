@@ -11,6 +11,9 @@ export type GameState = {
   };
   spinAmount: number;
   question: Question | null;
+  providedAnswer: string;
+  unknown: boolean;
+  isCorrect: boolean;
 };
 
 export type Category = {
@@ -31,9 +34,11 @@ export type Question = {
 export interface GameContextInterface {
   gameState: GameState;
   startGame: any;
-  setStep: any;
   resetGame: any;
+  playAgain: any;
+  setStep: any;
   selectCategory: any;
   onSpinStart: any;
   onSpinComplete: any;
+  submitAnswer: any;
 }

@@ -20,6 +20,9 @@ const DEFAULT_GAME_STATE: GameState = {
   },
   spinAmount: 0,
   question: null,
+  providedAnswer: "",
+  unknown: false,
+  isCorrect: false,
 };
 
 export const GameContext = React.createContext<GameContextInterface>({
@@ -30,6 +33,8 @@ export const GameContext = React.createContext<GameContextInterface>({
   selectCategory: null,
   onSpinStart: null,
   onSpinComplete: null,
+  submitAnswer: null,
+  playAgain: null,
 });
 
 interface GameProviderProps {
@@ -53,6 +58,17 @@ const GameProvider = ({ children }: GameProviderProps) => {
 
   const resetGame = () => setGameState(DEFAULT_GAME_STATE);
 
+  const playAgain = () =>
+    setGameState({
+      ...DEFAULT_GAME_STATE,
+      step: 1,
+      playerName: gameState.playerName,
+    });
+
+  const flagFaultyQuestion = () => {
+    // API call to update question as faulty
+  };
+
   const selectCategory = (category: Category) => {
     setGameState((prev) => ({
       ...prev,
@@ -73,10 +89,10 @@ const GameProvider = ({ children }: GameProviderProps) => {
   };
 
   const onSpinComplete = (relativeDegree: number) => {
-    const spinWheelValue = Math.ceil(relativeDegree / wheelZoneSize);
-    const spinAmount = WHEEL_VALUES[spinWheelValue as number];
-
-    console.log("HERE IS SPIN WHEEL VALUE", spinWheelValue, spinAmount);
+    const spinWheelValue = Math.ceil(
+      relativeDegree / wheelZoneSize
+    ) as keyof typeof WHEEL_VALUES;
+    const spinAmount = WHEEL_VALUES[spinWheelValue];
 
     setGameState((prev) => ({
       ...prev,
@@ -115,15 +131,38 @@ const GameProvider = ({ children }: GameProviderProps) => {
       console.log("HERE ARE QUESTION OPTIONS", questions);
       setGameState((prev) => ({
         ...prev,
-        question: questions[randomIndex],
+        question: {
+          ...questions[randomIndex],
+          question: fixQuestionText(questions[randomIndex].question),
+          correct_answer: fixQuestionText(
+            questions[randomIndex].correct_answer
+          ),
+        },
       }));
     } catch (error: any) {
-      console.log("HERE IS ERROR", error);
       setGameState((prev) => ({
         ...prev,
         error: error.message,
       }));
     }
+  };
+
+  const fixQuestionText = (questionText: string) =>
+    questionText.replaceAll("&quot;", "'").replaceAll("&#039;", "'");
+
+  const submitAnswer = (
+    providedAnswer: string,
+    unknown: boolean | undefined
+  ) => {
+    const isCorrect =
+      providedAnswer === gameState.question?.correct_answer ||
+      providedAnswer === gameState.question?.correct_answer.toLowerCase();
+    setGameState((prev) => ({
+      ...prev,
+      isCorrect,
+      providedAnswer,
+      unknown: !!unknown,
+    }));
   };
 
   useEffect(() => {
@@ -142,10 +181,12 @@ const GameProvider = ({ children }: GameProviderProps) => {
     gameState,
     startGame,
     resetGame,
+    playAgain,
     selectCategory,
     onSpinStart,
     onSpinComplete,
     setStep,
+    submitAnswer,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
