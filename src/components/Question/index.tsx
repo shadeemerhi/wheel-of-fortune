@@ -11,7 +11,7 @@ type QuestionProps = {};
 const Question: React.FC<QuestionProps> = () => {
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState(false);
-  const { gameState, submitAnswer, playAgain, createMultipleChoice } =
+  const { gameState, submitAnswer, playAgain, convertToMultipleChoice } =
     useContext(GameContext);
 
   const onSubmit = () => {
@@ -32,7 +32,7 @@ const Question: React.FC<QuestionProps> = () => {
         <Amount spinAmount={gameState.spinAmount} />
         <div className={styles.question_container}>
           <span className="xl_text">{gameState.question?.question}</span>
-          {!gameState.providedAnswer && (
+          {!gameState.providedAnswer && !gameState.multipleChoice && (
             <span className="secondary_text">
               If it's a number, please type as a word (e.g. 1 as 'one')
             </span>
@@ -71,6 +71,7 @@ const Question: React.FC<QuestionProps> = () => {
               {gameState.multipleChoice ? (
                 <MultipleChoice
                   choices={gameState.multipleChoice}
+                  answer={answer}
                   setAnswer={setAnswer}
                 />
               ) : (
@@ -93,7 +94,7 @@ const Question: React.FC<QuestionProps> = () => {
                   <span className="secondary_text pointer">Don't know?</span>
                   <span
                     className="underline_text"
-                    onClick={createMultipleChoice}
+                    onClick={convertToMultipleChoice}
                   >
                     Try multiple choice for 25% of the prize
                   </span>

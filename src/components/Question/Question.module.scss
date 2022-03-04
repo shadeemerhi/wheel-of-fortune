@@ -22,7 +22,24 @@
     }
 
     button {
-      margin-bottom: 14px;
+      margin: 20px 0px;
+    }
+
+    .question_item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 40px;
+      margin: 10px 0px;
+      padding: 10px;
+      border-radius: main.$border-radius;
+      box-shadow: main.$box-shadow;
+
+      &._selected {
+        color: white;
+        background-color: main.$main;
+      }
     }
   }
 

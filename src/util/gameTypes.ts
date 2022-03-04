@@ -42,5 +42,5 @@ export interface GameContextInterface {
   onSpinStart: any;
   onSpinComplete: any;
   submitAnswer: any;
-  createMultipleChoice: any;
+  convertToMultipleChoice: any;
 }

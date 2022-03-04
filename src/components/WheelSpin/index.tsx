@@ -24,7 +24,7 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
     const absoluteDegree = Math.floor(5000 + Math.random() * 5000);
 
     // Apply spin styles
-    wheelRef.current.style.transition = "all 5s ease-out";
+    wheelRef.current.style.transition = "all 4s ease-out";
     wheelRef.current.style.transform = `rotate(${absoluteDegree}deg)`;
     wheelRef.current.style.webkitTransform = `rotate(${absoluteDegree}deg)`;
 

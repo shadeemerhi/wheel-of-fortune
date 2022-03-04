@@ -35,7 +35,7 @@ export const GameContext = React.createContext<GameContextInterface>({
   onSpinComplete: null,
   submitAnswer: null,
   playAgain: null,
-  createMultipleChoice: null,
+  convertToMultipleChoice: null,
 });
 
 interface GameProviderProps {
@@ -65,10 +65,6 @@ const GameProvider = ({ children }: GameProviderProps) => {
       step: 1,
       playerName: gameState.playerName,
     });
-
-  const flagFaultyQuestion = () => {
-    // API call to update question as faulty
-  };
 
   const selectCategory = (category: Category) => {
     setGameState((prev) => ({
@@ -121,24 +117,31 @@ const GameProvider = ({ children }: GameProviderProps) => {
       if (!results.length) {
         throw new Error("No results");
       }
-
-      console.log("HERE IS DATA", data);
+      console.log("HERE ARE RESULTS", results);
 
       const questions = results.filter(
         (question) => question.type !== "boolean"
       );
 
       const randomIndex = Math.floor(Math.random() * questions.length);
-      console.log("HERE ARE QUESTION OPTIONS", questions);
+      const isMultipleChoice =
+        questions[randomIndex].question.includes("Which of");
+      const question = questions[randomIndex];
       setGameState((prev) => ({
         ...prev,
         question: {
-          ...questions[randomIndex],
-          question: fixQuestionText(questions[randomIndex].question),
+          ...question,
+          question: fixQuestionText(question.question),
           correct_answer: fixQuestionText(
             questions[randomIndex].correct_answer
           ),
         },
+        multipleChoice: isMultipleChoice
+          ? (getMultipleChoiceAnswers(
+              question.correct_answer,
+              question.incorrect_answers
+            ) as string[])
+          : undefined,
       }));
     } catch (error: any) {
       setGameState((prev) => ({
@@ -162,19 +165,12 @@ const GameProvider = ({ children }: GameProviderProps) => {
     }));
   };
 
-  const createMultipleChoice = () => {
-    const questionAnswers = [
-      gameState.question?.correct_answer,
-      ...gameState.question?.incorrect_answers!,
-    ];
-    console.log("ANSWERS BEFORE", questionAnswers);
+  const convertToMultipleChoice = () => {
+    const questionAnswers = getMultipleChoiceAnswers(
+      gameState.question?.correct_answer!,
+      gameState.question?.incorrect_answers!
+    );
 
-    for (let i = questionAnswers.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = questionAnswers[i];
-      questionAnswers[i] = questionAnswers[j];
-      questionAnswers[j] = temp;
-    }
     setGameState((prev) => ({
       ...prev,
       multipleChoice: questionAnswers as string[],
@@ -182,8 +178,23 @@ const GameProvider = ({ children }: GameProviderProps) => {
     }));
   };
 
+  const getMultipleChoiceAnswers = (
+    correctAnswer: string,
+    incorrectAnswers: string[]
+  ) => {
+    const questionAnswers = [correctAnswer, ...incorrectAnswers];
+
+    for (let i = questionAnswers.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = questionAnswers[i];
+      questionAnswers[i] = questionAnswers[j];
+      questionAnswers[j] = temp;
+    }
+    return questionAnswers;
+  };
+
   useEffect(() => {
-    if (!gameState.spinAmount) return;
+    if (!gameState.spinAmount || gameState.question) return;
     fetchQuestion();
   }, [gameState.spinAmount]);
 
@@ -204,7 +215,7 @@ const GameProvider = ({ children }: GameProviderProps) => {
     onSpinComplete,
     setStep,
     submitAnswer,
-    createMultipleChoice,
+    convertToMultipleChoice,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
