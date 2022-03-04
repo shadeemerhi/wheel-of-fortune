@@ -18,6 +18,7 @@ const Categories: React.FC<CategoriesProps> = ({}) => {
       <div className={styles.categories_container}>
         {CATEGORIES.map((category) => (
           <CategoryItem
+            key={category.categoryId}
             category={category}
             setSelectedCategory={setSelectedCategory}
             selected={category.categoryId === selectedCategory.categoryId}
