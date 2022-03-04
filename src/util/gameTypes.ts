@@ -14,7 +14,7 @@ export type GameState = {
   providedAnswer: string;
   unknown: boolean;
   isCorrect: boolean;
-  multipleChoice: boolean;
+  multipleChoice?: string[];
 };
 
 export type Category = {

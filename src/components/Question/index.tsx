@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { GameContext } from "../../context/GameProvider";
+
 import Amount from "../WheelSpin/Amount";
+import MultipleChoice from "./MultipleChoice";
 
 import styles from "./Question.module.scss";
 
@@ -67,7 +69,10 @@ const Question: React.FC<QuestionProps> = () => {
           ) : (
             <>
               {gameState.multipleChoice ? (
-                <div>multiple choice</div>
+                <MultipleChoice
+                  choices={gameState.multipleChoice}
+                  setAnswer={setAnswer}
+                />
               ) : (
                 <>
                   <input
@@ -83,15 +88,17 @@ const Question: React.FC<QuestionProps> = () => {
               <button className="btn_primary" onClick={() => onSubmit()}>
                 Submit
               </button>
-              <span
-                className="secondary_text pointer"
-                // onClick={() => onSubmit(true)}
-              >
-                Don't know?
-              </span>
-              <span className="underline_text" onClick={createMultipleChoice}>
-                Try multiple choice for 25% of the prize
-              </span>
+              {!gameState.multipleChoice && (
+                <>
+                  <span className="secondary_text pointer">Don't know?</span>
+                  <span
+                    className="underline_text"
+                    onClick={createMultipleChoice}
+                  >
+                    Try multiple choice for 25% of the prize
+                  </span>
+                </>
+              )}
             </>
           )}
         </div>

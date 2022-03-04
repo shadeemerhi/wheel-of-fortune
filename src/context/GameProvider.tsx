@@ -23,7 +23,6 @@ const DEFAULT_GAME_STATE: GameState = {
   providedAnswer: "",
   unknown: false,
   isCorrect: false,
-  multipleChoice: false,
 };
 
 export const GameContext = React.createContext<GameContextInterface>({
@@ -36,6 +35,7 @@ export const GameContext = React.createContext<GameContextInterface>({
   onSpinComplete: null,
   submitAnswer: null,
   playAgain: null,
+  createMultipleChoice: null,
 });
 
 interface GameProviderProps {
@@ -163,9 +163,22 @@ const GameProvider = ({ children }: GameProviderProps) => {
   };
 
   const createMultipleChoice = () => {
+    const questionAnswers = [
+      gameState.question?.correct_answer,
+      ...gameState.question?.incorrect_answers!,
+    ];
+    console.log("ANSWERS BEFORE", questionAnswers);
+
+    for (let i = questionAnswers.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = questionAnswers[i];
+      questionAnswers[i] = questionAnswers[j];
+      questionAnswers[j] = temp;
+    }
     setGameState((prev) => ({
       ...prev,
-      multipleChoice: true,
+      multipleChoice: questionAnswers as string[],
+      spinAmount: Math.round(0.25 * gameState.spinAmount),
     }));
   };
 
