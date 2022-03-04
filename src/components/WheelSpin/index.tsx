@@ -60,7 +60,7 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
         </span>
         <div className={styles.wheel_container}>
           <img src="/pointer.svg" className={styles.wheel_pointer} />
-          <img src="/wheel.svg" ref={wheelRef} className={styles.wheel_body} />
+          <img src="/wheel.png" ref={wheelRef} className={styles.wheel_body} />
         </div>
         {!gameState.spinAmount ? (
           <button
