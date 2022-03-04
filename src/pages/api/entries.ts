@@ -9,7 +9,7 @@ type Data = {
 };
 
 export async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  // await dbConnect();
+  await dbConnect();
 
   // EntryModel.create(req.body);
 

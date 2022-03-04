@@ -5,7 +5,9 @@ Source :
 https://github.com/vercel/next.js/blob/canary/examples/with-mongodb-mongoose/utils/dbConnect.js 
 **/
 
-const MONGO_URI = process.env.MONGO_URI;
+// const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI =
+  "mongodb+srv://shadmerhi:Cowmanozmo4%23%23@cluster0.vqivb.mongodb.net/wheelOfFortuneDev?authSource=admin&replicaSet=atlas-33pbyo-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
 
 if (!MONGO_URI) {
   throw new Error(
