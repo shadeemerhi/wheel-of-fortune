@@ -11,7 +11,7 @@ type Data = {
 export async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   await dbConnect();
 
-  // EntryModel.create(req.body);
+  EntryModel.create(req.body);
 
   res.status(200).json({ message: "Successfully saved" });
 }
