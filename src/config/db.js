@@ -25,13 +25,14 @@ if (!cached) {
 }
 
 async function dbConnect() {
+  console.log("ATTEMPTING DATABASE CONNECTION", process.env.MONGO_URI);
   if (cached.conn) {
     return cached.conn;
   }
 
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGO_URI).then((mongoose) => {
-      console.log("CONNECTED. I THINK");
+      console.log("MONGODB SUCCESSFULLY CONNECTED");
       return mongoose;
     });
   }
