@@ -15,8 +15,6 @@ import Amount from "./Amount";
 type WheelSpinProps = {};
 
 const WheelSpin: React.FC<WheelSpinProps> = () => {
-  console.log("COMPONENT RENDERING");
-
   const { gameState, onSpinStart, onSpinComplete, setStep } =
     useContext(GameContext);
 
@@ -24,10 +22,9 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
 
   const handleSpin = useCallback(() => {
     const absoluteDegree = Math.floor(5000 + Math.random() * 5000);
-    console.log("here is current thing", wheelRef, absoluteDegree);
 
     // Apply spin styles
-    wheelRef.current.style.transition = "all 10s ease-out";
+    wheelRef.current.style.transition = "all 5s ease-out";
     wheelRef.current.style.transform = `rotate(${absoluteDegree}deg)`;
     wheelRef.current.style.webkitTransform = `rotate(${absoluteDegree}deg)`;
 
@@ -41,7 +38,6 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
       wheelRef.current.style.transition = "none";
       wheelRef.current.style.transform = `rotate(${relativeDegree}deg)`;
       wheelRef.current.style.webkitTransform = `rotate(${relativeDegree}deg)`;
-      console.log("HERE IS REF", wheelRef.current.style);
 
       // update game state
       onSpinComplete(relativeDegree);

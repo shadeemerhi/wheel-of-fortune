@@ -14,6 +14,7 @@ export type GameState = {
   providedAnswer: string;
   unknown: boolean;
   isCorrect: boolean;
+  multipleChoice: boolean;
 };
 
 export type Category = {
@@ -41,4 +42,5 @@ export interface GameContextInterface {
   onSpinStart: any;
   onSpinComplete: any;
   submitAnswer: any;
+  createMultipleChoice: any;
 }

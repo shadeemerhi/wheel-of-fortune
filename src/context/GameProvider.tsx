@@ -23,6 +23,7 @@ const DEFAULT_GAME_STATE: GameState = {
   providedAnswer: "",
   unknown: false,
   isCorrect: false,
+  multipleChoice: false,
 };
 
 export const GameContext = React.createContext<GameContextInterface>({
@@ -150,10 +151,7 @@ const GameProvider = ({ children }: GameProviderProps) => {
   const fixQuestionText = (questionText: string) =>
     questionText.replaceAll("&quot;", "'").replaceAll("&#039;", "'");
 
-  const submitAnswer = (
-    providedAnswer: string,
-    unknown: boolean | undefined
-  ) => {
+  const submitAnswer = (providedAnswer: string) => {
     const isCorrect =
       providedAnswer === gameState.question?.correct_answer ||
       providedAnswer === gameState.question?.correct_answer.toLowerCase();
@@ -161,7 +159,13 @@ const GameProvider = ({ children }: GameProviderProps) => {
       ...prev,
       isCorrect,
       providedAnswer,
-      unknown: !!unknown,
+    }));
+  };
+
+  const createMultipleChoice = () => {
+    setGameState((prev) => ({
+      ...prev,
+      multipleChoice: true,
     }));
   };
 
@@ -187,6 +191,7 @@ const GameProvider = ({ children }: GameProviderProps) => {
     onSpinComplete,
     setStep,
     submitAnswer,
+    createMultipleChoice,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

@@ -9,15 +9,16 @@ type QuestionProps = {};
 const Question: React.FC<QuestionProps> = () => {
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState(false);
-  const { gameState, submitAnswer, playAgain } = useContext(GameContext);
+  const { gameState, submitAnswer, playAgain, createMultipleChoice } =
+    useContext(GameContext);
 
-  const onSubmit = (unknown?: boolean) => {
+  const onSubmit = () => {
     if (error) setError(false);
 
-    if (!answer && unknown === undefined) {
+    if (!answer) {
       setError(true);
     }
-    submitAnswer(answer, unknown);
+    submitAnswer(answer);
   };
   return (
     <div className="component_wrapper">
@@ -29,11 +30,13 @@ const Question: React.FC<QuestionProps> = () => {
         <Amount spinAmount={gameState.spinAmount} />
         <div className={styles.question_container}>
           <span className="xl_text">{gameState.question?.question}</span>
-          <span className="secondary_text">
-            If it's a number, please type as a word (e.g. 1 as 'one')
-          </span>
+          {!gameState.providedAnswer && (
+            <span className="secondary_text">
+              If it's a number, please type as a word (e.g. 1 as 'one')
+            </span>
+          )}
 
-          {gameState.providedAnswer || gameState.unknown ? (
+          {gameState.providedAnswer ? (
             <>
               <div className={`${styles.result_container} lg_text`}>
                 {gameState.isCorrect ? (
@@ -63,20 +66,31 @@ const Question: React.FC<QuestionProps> = () => {
             </>
           ) : (
             <>
-              <input
-                placeholder="Type answer"
-                value={answer}
-                onChange={(event) => setAnswer(event.target.value)}
-              />
-              {error && <span className="error_text">Invalid submission</span>}
+              {gameState.multipleChoice ? (
+                <div>multiple choice</div>
+              ) : (
+                <>
+                  <input
+                    placeholder="Type answer"
+                    value={answer}
+                    onChange={(event) => setAnswer(event.target.value)}
+                  />
+                  {error && (
+                    <span className="error_text">Invalid submission</span>
+                  )}
+                </>
+              )}
               <button className="btn_primary" onClick={() => onSubmit()}>
                 Submit
               </button>
               <span
                 className="secondary_text pointer"
-                onClick={() => onSubmit(true)}
+                // onClick={() => onSubmit(true)}
               >
-                I don't know 😕
+                Don't know?
+              </span>
+              <span className="underline_text" onClick={createMultipleChoice}>
+                Try multiple choice for 25% of the prize
               </span>
             </>
           )}
