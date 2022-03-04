@@ -13,20 +13,17 @@ const GameIntro: React.FC<GameIntroProps> = () => {
   return (
     <div className="component_wrapper">
       <div className={styles.root}>
-        <span className="primary_text xl_text">Hello :)</span>
-        <span className="primary_text lg_text">🤑 Want Some Money? 🤑</span>
+        <span className="primary_text xl_text">Hello 😁</span>
+        <span className="primary_text lg_text">Want Some Money? 🤑</span>
         <form
           onSubmit={() => startGame(playerName)}
           className={styles.input_container}
         >
+          <span className="secondary_text mdlg_text">1. Choose a Category</span>
+          <span className="secondary_text mdlg_text">2. Spin the Wheel</span>
           <span className="secondary_text mdlg_text">
-            What's your name? (optional)
+            3. Answer Question to Win
           </span>
-          <input
-            placeholder="enter name"
-            value={playerName}
-            onChange={(event) => setPlayerName(event.target.value)}
-          />
           <button type="submit" className="btn_primary">
             Play
           </button>
