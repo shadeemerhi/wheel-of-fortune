@@ -14,8 +14,9 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({
 }) => {
   return (
     <>
-      {choices.map((choice) => (
+      {choices.map((choice, index) => (
         <ChoiceItem
+          key={index}
           choice={choice}
           selected={choice === answer}
           setAnswer={setAnswer}
