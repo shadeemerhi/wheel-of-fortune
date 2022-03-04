@@ -15,7 +15,6 @@ const Amount: React.FC<AmountProps> = ({ textSpin }) => {
   return (
     <div className={styles.amount_container}>
       <span className="mdlg_text">Potential Winnings 🤑</span>
-      <br />
       <span
         className={classNames({
           [styles.amount_text]: true,
