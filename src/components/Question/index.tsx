@@ -23,7 +23,7 @@ const Question: React.FC<QuestionProps> = () => {
     <div className="component_wrapper">
       <div className={styles.root}>
         <span className="primary_text xl_text">Answer to Win</span>
-        <span className="secondary_text lg_text">
+        <span className="secondary_text md_text">
           Category: {gameState.category.displayText}
         </span>
         <Amount spinAmount={gameState.spinAmount} />
