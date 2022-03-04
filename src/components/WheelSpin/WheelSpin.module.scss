@@ -15,6 +15,10 @@
     padding: 10px;
 
     .wheel_body {
+      position: relative;
+      left: 8%;
+      width: 85%;
+      height: auto;
     }
 
     .wheel_pointer {
