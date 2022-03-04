@@ -9,7 +9,9 @@ type Data = {
 };
 
 export async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+  console.log("INSIDE OF THE REQUEST");
   await dbConnect();
+  console.log("INSIDE OF THE REQUEST");
 
   EntryModel.create(req.body);
 
