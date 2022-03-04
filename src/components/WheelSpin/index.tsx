@@ -29,6 +29,7 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
     // Apply spin styles
     wheelRef.current.style.transition = "all 10s ease-out";
     wheelRef.current.style.transform = `rotate(${absoluteDegree}deg)`;
+    wheelRef.current.style.webkitTransform = `rotate(${absoluteDegree}deg)`;
 
     // update game state
     onSpinStart(absoluteDegree);
@@ -39,6 +40,8 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
       const relativeDegree = gameState.wheelState.absoluteDegree % 360;
       wheelRef.current.style.transition = "none";
       wheelRef.current.style.transform = `rotate(${relativeDegree}deg)`;
+      wheelRef.current.style.webkitTransform = `rotate(${relativeDegree}deg)`;
+      console.log("HERE IS REF", wheelRef.current.style);
 
       // update game state
       onSpinComplete(relativeDegree);
