@@ -64,6 +64,10 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
     // handleOpen();
   }, [gameState.wheelState.relativeDegree]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="component_wrapper">
       <div className={styles.root}>
