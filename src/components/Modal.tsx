@@ -17,26 +17,23 @@ const style = {
   width: 340,
   height: 260,
   bgcolor: "background.paper",
-  //   border: "2px solid #000",
   borderRadius: "10px",
   boxShadow: 24,
   p: 4,
+  "&:focus": {
+    outline: "none",
+  },
 };
 
 type TransitionsModalProps = {
   open: boolean;
-  handleOpen?: any;
   handleClose?: any;
 };
 
 const TransitionsModal: React.FC<TransitionsModalProps> = ({
   open,
-  handleOpen,
   handleClose,
 }) => {
-  //   const [open, setOpen] = React.useState(false);
-  //   const handleOpen = () => setOpen(true);
-
   return (
     <div>
       <Modal
@@ -54,8 +51,9 @@ const TransitionsModal: React.FC<TransitionsModalProps> = ({
           <Box sx={style}>
             <Amount textSpin />
             <br />
+            <span>Answer question to win!</span>
             <button className="btn_primary mdlg_text" onClick={handleClose}>
-              Answer Question
+              Question
             </button>
           </Box>
         </Fade>
