@@ -11,18 +11,18 @@
     <line id="Line_6" data-name="Line 6" y1="371" transform="translate(306.75 530.648) rotate(150)" fill="none" stroke="#363c49" stroke-width="1"/>
     <circle id="Ellipse_4" data-name="Ellipse 4" cx="20" cy="20" r="20" transform="translate(79 377)" fill="#fff"/>
     <circle id="Ellipse_5" data-name="Ellipse 5" cx="20" cy="20" r="20" transform="translate(194 350)" fill="#ddb6f4"/>
-    <text id="_20" data-name="$20" transform="matrix(0.259, -0.966, 0.966, 0.259, 245.875, 297.618)" fill="#00db5d" font-size="34" font-family="Verdana" letter-spacing="0.12em"><tspan x="0" y="0">$20</tspan></text>
-    <text id="_140" data-name="$140" transform="translate(278.043 323.759) rotate(-45)" fill="#00db5d" font-size="34" font-family="Verdana" letter-spacing="0.12em"><tspan x="0" y="0">$140</tspan></text>
-    <text id="_80" data-name="$80" transform="matrix(0.966, -0.259, 0.259, 0.966, 292.981, 361.307)" fill="#00db5d" font-size="34" font-family="Verdana" letter-spacing="0.18em"><tspan x="0" y="0">$80</tspan></text>
-    <text id="_50" data-name="$50" transform="matrix(0.966, 0.259, -0.259, 0.966, 286.329, 401.876)" fill="#00db5d" font-size="34" font-family="Verdana" letter-spacing="0.12em"><tspan x="0" y="0">$50</tspan></text>
-    <text id="_120" data-name="$120" transform="translate(260.851 433.365) rotate(45)" fill="#00db5d" font-size="34" font-family="Verdana" letter-spacing="0.12em"><tspan x="0" y="0">$120</tspan></text>
-    <text id="_60" data-name="$60" transform="matrix(0.259, 0.966, -0.966, 0.259, 222.305, 448.892)" fill="#00db5d" font-size="34" font-family="Verdana" letter-spacing="0.12em"><tspan x="0" y="0">$60</tspan></text>
-    <text id="_75" data-name="$75" transform="matrix(-0.259, 0.966, -0.966, -0.259, 182.124, 442.68)" fill="#00db5d" font-size="34" font-family="Verdana" letter-spacing="0.12em"><tspan x="0" y="0">$75</tspan></text>
-    <text id="_110" data-name="$110" transform="translate(149.79 416.395) rotate(135)" fill="#00db5d" font-size="34" font-family="Verdana" letter-spacing="0.12em"><tspan x="0" y="0">$110</tspan></text>
-    <text id="_200" data-name="$200" transform="matrix(-0.966, 0.259, -0.259, -0.966, 135.558, 378.693)" fill="#00db5d" font-size="34" font-family="Verdana" letter-spacing="0.12em"><tspan x="0" y="0">$200</tspan></text>
-    <text id="_40" data-name="$40" transform="matrix(-0.966, -0.259, 0.259, -0.966, 141.77, 339.124)" fill="#00db5d" font-size="34" font-family="Verdana" letter-spacing="0.12em"><tspan x="0" y="0">$40</tspan></text>
-    <text id="_100" data-name="$100" transform="matrix(-0.259, -0.966, 0.966, -0.259, 205.307, 291.406)" fill="#00db5d" font-size="34" font-family="Verdana" letter-spacing="0.12em"><tspan x="0" y="0">$100</tspan></text>
-    <text id="_10" data-name="$10" transform="translate(166.927 305.91) rotate(-135)" fill="#00db5d" font-size="34" font-family="Verdana" letter-spacing="0.12em"><tspan x="0" y="0">$10</tspan></text>
+    <text id="_20" data-name="$20" transform="matrix(0.259, -0.966, 0.966, 0.259, 245.875, 297.618)" fill="#00db5d" font-size="34" font-family="Montserrat-Regular, Montserrat" letter-spacing="0.18em"><tspan x="0" y="0">$20</tspan></text>
+    <text id="_140" data-name="$140" transform="translate(278.043 323.759) rotate(-45)" fill="#00db5d" font-size="34" font-family="Montserrat-Regular, Montserrat" letter-spacing="0.18em"><tspan x="0" y="0">$140</tspan></text>
+    <text id="_80" data-name="$80" transform="matrix(0.966, -0.259, 0.259, 0.966, 292.981, 361.307)" fill="#00db5d" font-size="34" font-family="Montserrat-Regular, Montserrat" letter-spacing="0.18em"><tspan x="0" y="0">$80</tspan></text>
+    <text id="_50" data-name="$50" transform="matrix(0.966, 0.259, -0.259, 0.966, 286.329, 401.876)" fill="#00db5d" font-size="34" font-family="Montserrat-Regular, Montserrat" letter-spacing="0.18em"><tspan x="0" y="0">$50</tspan></text>
+    <text id="_120" data-name="$120" transform="translate(260.851 433.365) rotate(45)" fill="#00db5d" font-size="34" font-family="Montserrat-Regular, Montserrat" letter-spacing="0.18em"><tspan x="0" y="0">$120</tspan></text>
+    <text id="_60" data-name="$60" transform="matrix(0.259, 0.966, -0.966, 0.259, 222.305, 448.892)" fill="#00db5d" font-size="34" font-family="Montserrat-Regular, Montserrat" letter-spacing="0.18em"><tspan x="0" y="0">$60</tspan></text>
+    <text id="_75" data-name="$75" transform="matrix(-0.259, 0.966, -0.966, -0.259, 182.124, 442.68)" fill="#00db5d" font-size="34" font-family="Montserrat-Regular, Montserrat" letter-spacing="0.18em"><tspan x="0" y="0">$75</tspan></text>
+    <text id="_110" data-name="$110" transform="translate(149.79 416.395) rotate(135)" fill="#00db5d" font-size="34" font-family="Montserrat-Regular, Montserrat" letter-spacing="0.18em"><tspan x="0" y="0">$110</tspan></text>
+    <text id="_200" data-name="$200" transform="matrix(-0.966, 0.259, -0.259, -0.966, 135.558, 378.693)" fill="#00db5d" font-size="34" font-family="Montserrat-Regular, Montserrat" letter-spacing="0.18em"><tspan x="0" y="0">$200</tspan></text>
+    <text id="_40" data-name="$40" transform="matrix(-0.966, -0.259, 0.259, -0.966, 141.77, 339.124)" fill="#00db5d" font-size="34" font-family="Montserrat-Regular, Montserrat" letter-spacing="0.18em"><tspan x="0" y="0">$40</tspan></text>
+    <text id="_100" data-name="$100" transform="matrix(-0.259, -0.966, 0.966, -0.259, 205.307, 291.406)" fill="#00db5d" font-size="34" font-family="Montserrat-Regular, Montserrat" letter-spacing="0.18em"><tspan x="0" y="0">$100</tspan></text>
+    <text id="_10" data-name="$10" transform="translate(166.927 305.91) rotate(-135)" fill="#00db5d" font-size="34" font-family="Montserrat-Regular, Montserrat" letter-spacing="0.18em"><tspan x="0" y="0">$10</tspan></text>
     <g id="Ellipse_6" data-name="Ellipse 6" transform="translate(343 227)" fill="#fff" stroke="#ffd62f" stroke-width="2">
       <circle cx="6" cy="6" r="6" stroke="none"/>
       <circle cx="6" cy="6" r="5" fill="none"/>

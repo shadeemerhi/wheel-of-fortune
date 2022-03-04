@@ -52,7 +52,7 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
     <div className="component_wrapper">
       <div className={styles.root}>
         <span className="primary_text xl_text">Spin the Wheel!</span>
-        <span className="secondary_text lg_text">
+        <span className="secondary_text md_text">
           Category: {gameState.category.displayText}
         </span>
         <span className="accent_text pointer" onClick={() => setStep(1)}>
@@ -75,7 +75,7 @@ const WheelSpin: React.FC<WheelSpinProps> = () => {
           </button>
         ) : (
           <button className="btn_primary" onClick={() => setStep(3)}>
-            Go to Question
+            Question
           </button>
         )}
         {!!gameState.spinAmount && !gameState.wheelState.isSpinning && (
